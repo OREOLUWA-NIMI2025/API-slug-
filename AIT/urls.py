@@ -18,11 +18,12 @@ from django.conf import settings
 from django.contrib import admin
 from django.urls import path
 from django.conf.urls.static import static
-from news.views import create_news,update_news, delete_news, retreive_news
+from news.views import create_news,update_news, delete_news, retreive_news, list_news
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('create/', create_news, name='create-news'),
+    path('all/', list_news, name='list-news'),
     path('update/<slug:slug>/', update_news, name='update-news'),
     path('retreive/<slug:slug>/', retreive_news, name='retreive-news'),
     path('delete/<slug:slug>/', delete_news, name='delete-news')

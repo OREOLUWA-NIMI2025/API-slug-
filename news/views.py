@@ -7,6 +7,12 @@ from rest_framework import status
 
 
 
+@api_view(["GET"])
+def list_news(request):
+    news = News.objects.all()
+    serializer = NewsSerializer(news, many=True)
+    return Response(serializer.data, status=status.HTTP_200_OK)
+
 
 @api_view(["POST"])
 def create_news(request):
@@ -33,7 +39,7 @@ def retreive_news(request, slug):
 
 @api_view(["DELETE"])
 def delete_news(request, slug):
-    news = get_object_or_404(news, slug=slug)
+    news = get_object_or_404(News, slug=slug)
     news.delete()
     return Response("news has succesfully been deleted", status=status.HTTP_204_NO_CONTENT)
 
