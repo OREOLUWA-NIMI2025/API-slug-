@@ -3,6 +3,7 @@ from .models import News
 class NewsAdmin(admin.ModelAdmin):
     list_display = ["title", "author", "published_date", "content"]
     prepopulated_fields = {"slug": ("title",)}
+    search_fields = ["title", "content"]
 
 
 admin.site.register(News, NewsAdmin)

@@ -6,7 +6,6 @@ from .models import News
 from rest_framework import status  
 
 
-
 @api_view(["GET"])
 def list_news(request):
     news = News.objects.all()
@@ -42,23 +41,6 @@ def delete_news(request, slug):
     news = get_object_or_404(News, slug=slug)
     news.delete()
     return Response("news has succesfully been deleted", status=status.HTTP_204_NO_CONTENT)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
